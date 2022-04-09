@@ -15,6 +15,7 @@ public class charMovingState : charBaseState
     {
         jump();
         move(charachter);
+        checkDash(charachter);
     }
 
     public override void OnCollisionEnter2D(charStateManger charachter,Collision2D collisionInfo)
@@ -53,5 +54,10 @@ public class charMovingState : charBaseState
                     animator.SetBool("isRunning",false);
                 }
         }
+    }
+    private void checkDash(charStateManger charachter)
+    {
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+            charachter.SwitchState(charachter.dashState);
     }
 }

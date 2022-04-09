@@ -59,7 +59,7 @@ public class charCombatController : MonoBehaviour
         Collider2D[] hitEnemies =  Physics2D.OverlapCircleAll(attackPoint.position,attackRange,enemyLayers);
         foreach(Collider2D enemy in hitEnemies)
         {
-            Debug.Log("attacked");
+            Debug.Log(enemy.name);
         }
         StartCoroutine(nameof(reloadAttack));
     }

@@ -25,5 +25,9 @@ public class charIdleState : charBaseState
         {
             charachter.SwitchState(charachter.jumpState);
         }
+        else if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            charachter.SwitchState(charachter.dashState);
+        }
     }
 }

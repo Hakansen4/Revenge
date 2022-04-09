@@ -9,6 +9,7 @@ public class charStateManger : MonoBehaviour
     //public charJumpingState jumpingState = new charJumpingState();
     public charMovingState movingState = new charMovingState();
     public charJumpState jumpState = new charJumpState();
+    public charDashState dashState = new charDashState();
 
     void Start()
     {

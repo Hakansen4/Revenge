@@ -11,10 +11,12 @@ public class e_0stateManager : MonoBehaviour
     [HideInInspector]public float leftBorder;
     #endregion
     public GameObject triggerGO;
+    public bool isHeavyEnemy;
     public bool isGoingLeft = false;
     public e_0baseState currentState;
     public e_0patrollingState patrolState = new e_0patrollingState();
     public e_0chaseState chaseState = new e_0chaseState();
+    public e_0combatState combatState = new e_0combatState();
 
     void Start()
     {

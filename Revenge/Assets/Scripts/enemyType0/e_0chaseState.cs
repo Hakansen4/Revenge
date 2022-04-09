@@ -32,7 +32,7 @@ public class e_0chaseState : e_0baseState
         if(enemy.transform.position.x - playerPosition.position.x <= 1 &&
             enemy.transform.position.x - playerPosition.position.x >= -1)
             {
-                Debug.Log("CombatTime");
+                enemy.SwitchState(enemy.combatState);
             }
         else if(!trigger.chaseStart)
         {
