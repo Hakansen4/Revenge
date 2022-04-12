@@ -14,6 +14,9 @@ public class charMovingState : charBaseState
     public override void UpdateState(charStateManger charachter)
     {
         jump();
+        speed = 1;
+        if(!charachter.GetComponent<charCombatController>().isAttacking ||  !canJump)
+            speed = 6;
         move(charachter);
         checkDash(charachter);
     }

@@ -11,10 +11,12 @@ public class charCombatController : MonoBehaviour
     thirdAttack
 }
     private Animator animator;
-    private bool isAttacking;
+    [HideInInspector]public bool isAttacking;
     private AttackMode attackMode;
     private float restartTimer;
+    private float attackAnimHittime = 0.4f;
     private float Damage;
+    private charStateManger state;
     private float attackReloadTime = 0.50f;
     [Header("Attack Needs")]
     [SerializeField]private Transform attackPoint;
@@ -27,9 +29,10 @@ public class charCombatController : MonoBehaviour
         animator = GetComponent<Animator>();
         isAttacking = false;
         attackMode = AttackMode.firstAttack;
+        state = GetComponent<charStateManger>();
     }
     private void Update() {
-        if(Input.GetMouseButtonDown(0)  &&  !isAttacking)
+        if(Input.GetMouseButtonDown(0)  &&  !isAttacking    &&  state.currentState != state.deadState)
         {
             isAttacking = true;
             checkAttackMode();
@@ -59,7 +62,7 @@ public class charCombatController : MonoBehaviour
         Collider2D[] hitEnemies =  Physics2D.OverlapCircleAll(attackPoint.position,attackRange,enemyLayers);
         foreach(Collider2D enemy in hitEnemies)
         {
-            Debug.Log(enemy.name);
+            StartCoroutine(attackWorks(enemy));
         }
         StartCoroutine(nameof(reloadAttack));
     }
@@ -87,5 +90,38 @@ public class charCombatController : MonoBehaviour
 
     private void OnDrawGizmosSelected() {
         Gizmos.DrawWireSphere(attackPoint.position,attackRange);    
+    }
+
+    private IEnumerator attackWorks(Collider2D enemy)
+    {
+            yield return new WaitForSeconds(attackAnimHittime);
+            e_0stateManager enemyState = enemy.GetComponentInParent<e_0stateManager>();
+            e_0healthController healthEnemy = enemy.GetComponentInParent<e_0healthController>();
+            if(enemyState.combatState.isHeavy)
+            {
+                healthEnemy.increaseHealth();
+                if(!enemyState.combatState.isAttacking)
+                {
+                    if(gameObject.transform.position.x > enemy.GetComponent<Transform>().position.x)
+                        enemy.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(-1,1)*100);
+                    else
+                        enemy.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(1,1)*100);
+                    if(!healthEnemy.isDead())
+                        enemyState.SwitchState(enemyState.hittedState);
+                }
+            }
+            else
+            {
+                healthEnemy.increaseHealth();
+                if(!healthEnemy.isDead())
+                {
+                    if(gameObject.transform.position.x > enemy.GetComponent<Transform>().position.x)
+                        enemy.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(-1,1)*100);
+                    else
+                        enemy.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(1,1)*100);
+                 
+                        enemyState.SwitchState(enemyState.hittedState);
+                }
+            }
     }
 }

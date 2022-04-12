@@ -3,16 +3,17 @@ using UnityEngine;
 public class e_0combatState : e_0baseState
 {
     private float cdTimer;
-    private float cooldown = 1;
+    private float cooldown = 2;
     private float animTimer;
-    private float animLong = 1f;
+    private float animLong;
     private Animator anim;
-    private bool isAttacking;
-    private bool isHeavy;
+    public bool isAttacking;
+    public bool isHeavy;
     private bool animFinished;
     private Transform playerPosition;
     public override void EnterState(e_0stateManager enemy)
     {
+        animLong = enemy.attackAnimLong;
         cdTimer = Time.time - cooldown;
         anim = enemy.GetComponent<Animator>();
         playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -61,8 +62,7 @@ public class e_0combatState : e_0baseState
         if(Time.time - cdTimer > cooldown   &&  !isAttacking)
         {
             isAttacking = true;
-            if(isHeavy)
-                anim.SetTrigger("Attack");
+            anim.SetTrigger("Attack");
             animTimer = Time.time + animLong;
             animFinished = false;
         }

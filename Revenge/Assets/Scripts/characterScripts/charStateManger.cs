@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class charStateManger : MonoBehaviour
 {
+    #region States
     public charBaseState currentState;
     public charIdleState idleState = new charIdleState();
     //public charJumpingState jumpingState = new charJumpingState();
     public charMovingState movingState = new charMovingState();
     public charJumpState jumpState = new charJumpState();
     public charDashState dashState = new charDashState();
-
+    public charDeadState deadState = new charDeadState();
+    #endregion
     void Start()
     {
         currentState = idleState;

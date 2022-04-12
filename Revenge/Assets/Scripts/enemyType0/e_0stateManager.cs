@@ -11,13 +11,19 @@ public class e_0stateManager : MonoBehaviour
     [HideInInspector]public float leftBorder;
     #endregion
     public GameObject triggerGO;
+    public float attackAnimLong;
+    public float hitAnimTime;
     public bool isHeavyEnemy;
     public bool isGoingLeft = false;
+    
+    #region States
     public e_0baseState currentState;
     public e_0patrollingState patrolState = new e_0patrollingState();
     public e_0chaseState chaseState = new e_0chaseState();
     public e_0combatState combatState = new e_0combatState();
-
+    public e_0hittedState hittedState = new e_0hittedState();
+    public e_0deadState deadState = new e_0deadState();
+    #endregion
     void Start()
     {
         leftBorder = patrolLeft.position.x;
