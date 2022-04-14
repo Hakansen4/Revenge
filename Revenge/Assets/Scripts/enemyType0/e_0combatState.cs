@@ -14,7 +14,7 @@ public class e_0combatState : e_0baseState
     public override void EnterState(e_0stateManager enemy)
     {
         animLong = enemy.attackAnimLong;
-        cdTimer = Time.time - cooldown;
+        cdTimer = 0;
         anim = enemy.GetComponent<Animator>();
         playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         isAttacking = false;

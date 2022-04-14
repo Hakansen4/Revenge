@@ -102,10 +102,10 @@ public class charCombatController : MonoBehaviour
                 healthEnemy.increaseHealth();
                 if(!enemyState.combatState.isAttacking)
                 {
-                    if(gameObject.transform.position.x > enemy.GetComponent<Transform>().position.x)
+                    /*if(gameObject.transform.position.x > enemy.GetComponent<Transform>().position.x)
                         enemy.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(-1,1)*100);
                     else
-                        enemy.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(1,1)*100);
+                        enemy.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(1,1)*100);*/
                     if(!healthEnemy.isDead())
                         enemyState.SwitchState(enemyState.hittedState);
                 }
@@ -115,10 +115,10 @@ public class charCombatController : MonoBehaviour
                 healthEnemy.increaseHealth();
                 if(!healthEnemy.isDead())
                 {
-                    if(gameObject.transform.position.x > enemy.GetComponent<Transform>().position.x)
+                    /*if(gameObject.transform.position.x > enemy.GetComponent<Transform>().position.x)
                         enemy.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(-1,1)*100);
                     else
-                        enemy.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(1,1)*100);
+                        enemy.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(1,1)*100);*/
                  
                         enemyState.SwitchState(enemyState.hittedState);
                 }

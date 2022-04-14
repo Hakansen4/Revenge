@@ -11,10 +11,11 @@ public class e_0stateManager : MonoBehaviour
     [HideInInspector]public float leftBorder;
     #endregion
     public GameObject triggerGO;
+    [Header("Dusman Ozellikleri")]
     public float attackAnimLong;
     public float hitAnimTime;
     public bool isHeavyEnemy;
-    public bool isGoingLeft = false;
+    [HideInInspector]public bool isGoingLeft = false;
     
     #region States
     public e_0baseState currentState;
