@@ -14,7 +14,10 @@ public class e_0stateManager : MonoBehaviour
     [Header("Dusman Ozellikleri")]
     public float attackAnimLong;
     public float hitAnimTime;
+    public float attackRange;
+    [Header("Dusman Tipi")]
     public bool isHeavyEnemy;
+    public bool isRangeEnemy;
     [HideInInspector]public bool isGoingLeft = false;
     
     #region States

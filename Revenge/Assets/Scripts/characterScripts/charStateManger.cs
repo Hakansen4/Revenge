@@ -12,6 +12,7 @@ public class charStateManger : MonoBehaviour
     public charJumpState jumpState = new charJumpState();
     public charDashState dashState = new charDashState();
     public charDeadState deadState = new charDeadState();
+    public charHittedState hittedState = new charHittedState();
     #endregion
     void Start()
     {

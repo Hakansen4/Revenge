@@ -30,11 +30,13 @@ public class charHealthController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("e0_Hit"))
+        if(other.CompareTag("e0_Hit")   ||  other.CompareTag("Arrow"))
         {
             if(playerHealth > 0)
                 playerHealth -= 15;
             healthBar.setHealth(playerHealth);
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(100,100));
+            state.SwitchState(state.hittedState);
             if(playerHealth <= 0  &&  state.currentState != state.deadState)
             {
                 state.SwitchState(state.deadState);

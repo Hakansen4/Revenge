@@ -29,8 +29,8 @@ public class e_0chaseState : e_0baseState
 
     private void checkDistance(e_0stateManager enemy)
     {
-        if(enemy.transform.position.x - playerPosition.position.x <= 1 &&
-            enemy.transform.position.x - playerPosition.position.x >= -1)
+        if(enemy.transform.position.x - playerPosition.position.x <= enemy.attackRange &&
+            enemy.transform.position.x - playerPosition.position.x >= -enemy.attackRange)
             {
                 enemy.SwitchState(enemy.combatState);
             }
