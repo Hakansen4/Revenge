@@ -4,10 +4,23 @@ using UnityEngine;
 
 public class bossStateManager : MonoBehaviour
 {
+    #region States
     public bossBaseState currentState;
+    public bossWalkingState walkState = new bossWalkingState();
+    public bossCombatState combatState = new bossCombatState();
+    public bossDashState dashState = new bossDashState();
+    public bossS_AttackState S_AttackState = new bossS_AttackState();
+    public bossDeadState deadState = new bossDeadState();
+    #endregion
+    public float combatRange;
+    public float AttackTime;
+    public float dashAnimTime;
+    public float S_AttackAnimTime;
+    public float S_AttackCooldown;
+
     void Start()
     {
-        //currentState = idleState;
+        currentState = walkState;
         currentState.EnterState(this);
     }
 

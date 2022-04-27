@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 1666829911}
   m_Layer: 0
   m_Name: EnemySkeleton0
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -590,6 +590,7 @@ MonoBehaviour:
   hitAnimTime: 0.5
   attackRange: 1
   isHeavyEnemy: 1
+  isRangeEnemy: 0
   isGoingLeft: 0
 --- !u!114 &7168715152816015414
 MonoBehaviour:

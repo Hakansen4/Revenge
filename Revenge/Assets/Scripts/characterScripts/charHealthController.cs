@@ -35,8 +35,8 @@ public class charHealthController : MonoBehaviour
             if(playerHealth > 0)
                 playerHealth -= 15;
             healthBar.setHealth(playerHealth);
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(100,100));
             state.SwitchState(state.hittedState);
+            hitEffect(other);
             if(playerHealth <= 0  &&  state.currentState != state.deadState)
             {
                 state.SwitchState(state.deadState);
@@ -74,5 +74,12 @@ public class charHealthController : MonoBehaviour
             return false;
         }
         return true;
+    }
+    private void hitEffect(Collider2D other)
+    {
+        if(other.transform.position.x > gameObject.transform.position.x)
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(-100,100));
+        else
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(100,100));
     }
 }

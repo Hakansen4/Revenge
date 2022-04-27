@@ -215,7 +215,7 @@ MonoBehaviour:
   attackRange: 0.7
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   restartTime: 2
   attack1Damage: 0
   attack2Damage: 0

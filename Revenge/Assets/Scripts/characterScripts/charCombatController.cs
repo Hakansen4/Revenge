@@ -62,7 +62,10 @@ public class charCombatController : MonoBehaviour
         Collider2D[] hitEnemies =  Physics2D.OverlapCircleAll(attackPoint.position,attackRange,enemyLayers);
         foreach(Collider2D enemy in hitEnemies)
         {
-            StartCoroutine(attackWorks(enemy));
+            if(enemy.CompareTag("Enemy"))
+                StartCoroutine(attackWorksE_0(enemy));
+            else if(enemy.CompareTag("Boss"))
+                StartCoroutine(attackWorksBoss(enemy));
         }
         StartCoroutine(nameof(reloadAttack));
     }
@@ -92,36 +95,34 @@ public class charCombatController : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position,attackRange);    
     }
 
-    private IEnumerator attackWorks(Collider2D enemy)
+    private IEnumerator attackWorksE_0(Collider2D enemy)
     {
             yield return new WaitForSeconds(attackAnimHittime);
             e_0stateManager enemyState = enemy.GetComponentInParent<e_0stateManager>();
             e_0healthController healthEnemy = enemy.GetComponentInParent<e_0healthController>();
+            healthEnemy.increaseHealth();
             if(enemyState.combatState.isHeavy)
             {
-                healthEnemy.increaseHealth();
                 if(!enemyState.combatState.isAttacking)
                 {
-                    /*if(gameObject.transform.position.x > enemy.GetComponent<Transform>().position.x)
-                        enemy.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(-1,1)*100);
-                    else
-                        enemy.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(1,1)*100);*/
                     if(!healthEnemy.isDead())
                         enemyState.SwitchState(enemyState.hittedState);
                 }
             }
             else
             {
-                healthEnemy.increaseHealth();
                 if(!healthEnemy.isDead())
                 {
-                    /*if(gameObject.transform.position.x > enemy.GetComponent<Transform>().position.x)
-                        enemy.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(-1,1)*100);
-                    else
-                        enemy.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(1,1)*100);*/
-                 
-                        enemyState.SwitchState(enemyState.hittedState);
+                    enemyState.SwitchState(enemyState.hittedState);
                 }
             }
+    }
+
+    private IEnumerator attackWorksBoss(Collider2D enemy)
+    {
+            yield return new WaitForSeconds(attackAnimHittime);
+            bossStateManager bossState = enemy.GetComponentInParent<bossStateManager>();
+            bossHealthController healthBoss = enemy.GetComponentInParent<bossHealthController>();
+            healthBoss.increaseHealth();
     }
 }
