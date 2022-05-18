@@ -364,9 +364,10 @@ GameObject:
   - component: {fileID: 5714637478193436632}
   - component: {fileID: 5714637478193436635}
   - component: {fileID: 5714637478193436637}
+  - component: {fileID: 1652178503389801530}
   m_Layer: 0
   m_Name: EnemySkeleton3
-  m_TagString: Untagged
+  m_TagString: enemyPrefab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533,6 +534,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrow: {fileID: 2385478776390026956, guid: 187ca3d859855664cb066a29a8022713, type: 3}
   position: {fileID: 5714637477989485333}
+--- !u!114 &1652178503389801530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5714637478193436634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63d60be959613024eac5b5baa1f69160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loot: {fileID: 5373411508659659926, guid: faedc3d5674d0a845ba6d4b12dc4b0ba, type: 3}
+  soulsSayisi: 60
 --- !u!1 &5714637478222841835
 GameObject:
   m_ObjectHideFlags: 0

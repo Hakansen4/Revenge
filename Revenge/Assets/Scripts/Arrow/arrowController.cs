@@ -14,7 +14,6 @@ public class arrowController : MonoBehaviour
     void Update()
     {
         move();
-        Debug.Log(isGoingLeft);
     }
     private void move()
     {

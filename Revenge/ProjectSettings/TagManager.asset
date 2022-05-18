@@ -3,17 +3,24 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - e0_Hit
+  - Ground
+  - Arrow
+  - Enemy
+  - chaseArea
+  - Boss
+  - enemyPrefab
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Enemy
+  - Ground
+  - Boss
   - 
   - 
   - 

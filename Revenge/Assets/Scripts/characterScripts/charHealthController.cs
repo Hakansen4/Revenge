@@ -35,8 +35,11 @@ public class charHealthController : MonoBehaviour
             if(playerHealth > 0)
                 playerHealth -= 15;
             healthBar.setHealth(playerHealth);
-            state.SwitchState(state.hittedState);
-            hitEffect(other);
+            if(playerHealth > 0)
+            {
+                state.SwitchState(state.hittedState);
+                hitEffect(other);
+            }
             if(playerHealth <= 0  &&  state.currentState != state.deadState)
             {
                 state.SwitchState(state.deadState);
@@ -81,5 +84,21 @@ public class charHealthController : MonoBehaviour
             GetComponent<Rigidbody2D>().AddForce(new Vector2(-100,100));
         else
             GetComponent<Rigidbody2D>().AddForce(new Vector2(100,100));
+    }
+    public void healthLevelUp(int value)
+    {
+        Debug.Log("Eski Health = " + playerMaxHealth);
+        playerMaxHealth += value;
+        playerHealth = playerMaxHealth;
+        healthBar.setMaxHealth(playerMaxHealth);
+        healthBar.setHealth(playerHealth);
+        Debug.Log("Yeni Health = " + playerMaxHealth);
+    }
+    public void rest()
+    {
+        playerHealth = playerMaxHealth;
+        healthBar.setHealth(playerHealth);
+        potionCount = maxPotionCount;
+        potionCountText.text = potionCount.ToString();
     }
 }

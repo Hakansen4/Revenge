@@ -25,12 +25,12 @@ public class e_0healthController : MonoBehaviour
     {
         checkHealtBarTime();
     }
-    public void increaseHealth()
+    public void increaseHealth(float damage)
     {
         healthBarTimer = Time.time + healthBarTime;
         healtBarObject.SetActive(true);
         if(health > 0)
-            health--;
+            health-=damage;
         healthBar.setHealth(health);
         if(health <= 0  &&  state.currentState != state.deadState)
         {
@@ -49,5 +49,10 @@ public class e_0healthController : MonoBehaviour
         {
             healtBarObject.SetActive(false);
         }
+    }
+    public void respawn()
+    {
+        health = maxHealth;
+        healthBar.setMaxHealth(maxHealth);
     }
 }

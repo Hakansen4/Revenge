@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 1696173703}
   m_Layer: 0
   m_Name: EnemySkeleton1
-  m_TagString: Untagged
+  m_TagString: enemyPrefab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -316,6 +316,7 @@ MonoBehaviour:
   hitAnimTime: 0.5
   attackRange: 1
   isHeavyEnemy: 1
+  isRangeEnemy: 0
   isGoingLeft: 0
 --- !u!114 &2453771033715464087
 MonoBehaviour:
@@ -344,7 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loot: {fileID: 5373411508659659926, guid: faedc3d5674d0a845ba6d4b12dc4b0ba, type: 3}
-  soulsSayisi: 30
+  soulsSayisi: 75
 --- !u!1 &2453771033996394083
 GameObject:
   m_ObjectHideFlags: 0

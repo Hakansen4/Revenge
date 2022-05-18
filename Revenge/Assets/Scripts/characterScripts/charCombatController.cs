@@ -32,7 +32,8 @@ public class charCombatController : MonoBehaviour
         state = GetComponent<charStateManger>();
     }
     private void Update() {
-        if(Input.GetMouseButtonDown(0)  &&  !isAttacking    &&  state.currentState != state.deadState)
+        if(Input.GetMouseButtonDown(0)  &&  !isAttacking    &&  state.currentState != state.deadState
+            &&  state.currentState != state.restState)
         {
             isAttacking = true;
             checkAttackMode();
@@ -100,7 +101,7 @@ public class charCombatController : MonoBehaviour
             yield return new WaitForSeconds(attackAnimHittime);
             e_0stateManager enemyState = enemy.GetComponentInParent<e_0stateManager>();
             e_0healthController healthEnemy = enemy.GetComponentInParent<e_0healthController>();
-            healthEnemy.increaseHealth();
+            healthEnemy.increaseHealth(Damage);
             if(enemyState.combatState.isHeavy)
             {
                 if(!enemyState.combatState.isAttacking)
@@ -124,5 +125,17 @@ public class charCombatController : MonoBehaviour
             bossStateManager bossState = enemy.GetComponentInParent<bossStateManager>();
             bossHealthController healthBoss = enemy.GetComponentInParent<bossHealthController>();
             healthBoss.increaseHealth();
+    }
+    public float getDamage()
+    {
+        return attack1Damage;
+    }
+    public void levelUpDamage(int damage)
+    {
+        Debug.Log("Eski Damage = " + attack1Damage);
+        attack1Damage += damage;
+        attack2Damage += damage;
+        attack3Damage += damage;
+        Debug.Log("Yeni Damage = " + attack1Damage);
     }
 }

@@ -17,4 +17,12 @@ public class charSoulController : MonoBehaviour
         soulSayisi += sayi;
         soulText.text = soulSayisi.ToString();
     }
+    public float getSoulCount()
+    {
+        return soulSayisi;
+    }
+    public void deleteSouls(int count)
+    {
+        soulSayisi -= count;
+    }
 }
