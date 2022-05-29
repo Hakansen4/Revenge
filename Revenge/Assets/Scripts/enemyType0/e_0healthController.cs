@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class e_0healthController : MonoBehaviour
 {
-    [SerializeField]private float maxHealth;
+    [SerializeField] private Enemies enemyType;
+    private float maxHealth;
     [SerializeField]private healthBarController healthBar;
     private e_0stateManager state;
     private GameObject healtBarObject;
@@ -13,6 +14,7 @@ public class e_0healthController : MonoBehaviour
     private float health; 
     private void Awake()
     {
+        maxHealth = enemyType.enemyHealth;
         health = maxHealth;
         state = this.gameObject.GetComponent<e_0stateManager>();
         healtBarObject = healthBar.gameObject;

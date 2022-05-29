@@ -11,13 +11,13 @@ public class e_0stateManager : MonoBehaviour
     [HideInInspector]public float leftBorder;
     #endregion
     public GameObject triggerGO;
-    [Header("Dusman Ozellikleri")]
-    public float attackAnimLong;
-    public float hitAnimTime;
-    public float attackRange;
-    [Header("Dusman Tipi")]
-    public bool isHeavyEnemy;
-    public bool isRangeEnemy;
+    [SerializeField]private Enemies enemyType;
+
+    [HideInInspector] public float attackAnimLong;
+    [HideInInspector] public float hitAnimTime;
+    [HideInInspector] public float attackRange;
+    [HideInInspector] public bool isHeavyEnemy;
+    [HideInInspector] public bool isRangeEnemy;
     [HideInInspector]public bool isGoingLeft = false;
     
     #region States
@@ -28,6 +28,15 @@ public class e_0stateManager : MonoBehaviour
     public e_0hittedState hittedState = new e_0hittedState();
     public e_0deadState deadState = new e_0deadState();
     #endregion
+
+    private void Awake()
+    {
+        attackAnimLong = enemyType.attackAnimLong;
+        hitAnimTime = enemyType.hitAnimTime;
+        attackRange = enemyType.attackRange;
+        isHeavyEnemy = enemyType.isHeavyEnemy;
+        isRangeEnemy = enemyType.isRangeEnemy;
+    }
     void Start()
     {
         leftBorder = patrolLeft.position.x;

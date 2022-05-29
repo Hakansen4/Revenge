@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class campfireController : MonoBehaviour
 {
-    public charStateManger charState;
-    public allEnemies enemies;
+    private charStateManger charState;
+    private allEnemies enemies;
     public GameObject tButton;
     public GameObject levelUpScreen;
+
     private bool inArea = false;
+    private void Start()
+    {
+        charState = charStateManger.instance;
+        enemies = allEnemies.instance;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))

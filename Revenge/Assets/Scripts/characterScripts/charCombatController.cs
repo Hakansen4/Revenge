@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class charCombatController : MonoBehaviour
 {
+    public static charCombatController instance;
+    [SerializeField] private Player _playerData;
     private enum AttackMode
 {
     firstAttack,
@@ -18,18 +20,26 @@ public class charCombatController : MonoBehaviour
     private float Damage;
     private charStateManger state;
     private float attackReloadTime = 0.50f;
-    [Header("Attack Needs")]
     [SerializeField]private Transform attackPoint;
-    [SerializeField]private float attackRange;
-    [SerializeField]private LayerMask enemyLayers;
-    [SerializeField] private float restartTime;
-    [Header("Damage Values")]
-    [SerializeField]private int attack1Damage;[SerializeField]private int attack2Damage;[SerializeField]private int attack3Damage;
+    private float attackRange;
+    private LayerMask enemyLayers;
+    private float restartTime;
+    private int attack1Damage;private int attack2Damage;private int attack3Damage;
+    private void Awake()
+    {
+        instance = this;
+        attackRange = _playerData.AttackRange;
+        enemyLayers = _playerData.enemyLayers;
+        restartTime = _playerData.attackRestartTime;
+        attack1Damage = _playerData.FirstAttackDamge;
+        attack2Damage = _playerData.SeconAttackdDamge;
+        attack3Damage = _playerData.ThirdAttackDamge;
+    }
     private void Start() {
         animator = GetComponent<Animator>();
         isAttacking = false;
         attackMode = AttackMode.firstAttack;
-        state = GetComponent<charStateManger>();
+        state = charStateManger.instance;
     }
     private void Update() {
         if(Input.GetMouseButtonDown(0)  &&  !isAttacking    &&  state.currentState != state.deadState

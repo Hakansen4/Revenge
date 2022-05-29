@@ -13,7 +13,7 @@ public class lootController : MonoBehaviour
     float timer = 0;
     void Start()
     {
-        souls = GameObject.FindGameObjectWithTag("Player").GetComponent<charSoulController>();
+        souls = charSoulController.instance;
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
     void Update()

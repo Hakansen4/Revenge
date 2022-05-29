@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class charStateManger : MonoBehaviour
 {
+    public static charStateManger instance;
+
     #region States
     public charBaseState currentState;
     public charIdleState idleState = new charIdleState();
@@ -14,6 +16,10 @@ public class charStateManger : MonoBehaviour
     public charHittedState hittedState = new charHittedState();
     public charRestState restState = new charRestState();
     #endregion
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         currentState = idleState;

@@ -6,11 +6,6 @@ public class arrowController : MonoBehaviour
 {
     public float speed;
     public bool isGoingLeft;
-    private Transform trnsfrm;
-    void Start()
-    {
-        trnsfrm = this.gameObject.GetComponent<Transform>();
-    }
     void Update()
     {
         move();

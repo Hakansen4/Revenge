@@ -5,10 +5,13 @@ using TMPro;
 
 public class charSoulController : MonoBehaviour
 {
+    public static charSoulController instance;
+
     private float soulSayisi;
     public TextMeshProUGUI soulText;
-    private void Start()
+    private void Awake()
     {
+        instance = this;
         soulSayisi = 0;
         soulText.text = soulSayisi.ToString();
     }

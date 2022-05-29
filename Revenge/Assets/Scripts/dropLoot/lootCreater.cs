@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class lootCreater : MonoBehaviour
 {
+    [SerializeField] private Enemies enemyType;
+
     public GameObject loot;
-    public float soulsSayisi;
+    [HideInInspector]public float soulsSayisi;
     private GameObject lootObject;
     public void createLoot()
     {
+        soulsSayisi = enemyType.enemySoulCount;
         lootObject = Instantiate(loot,this.transform.position,Quaternion.identity);
         lootObject.GetComponent<lootController>().soulsSayisi = soulsSayisi;
     }

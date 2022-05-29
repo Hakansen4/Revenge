@@ -312,6 +312,7 @@ MonoBehaviour:
   rightBorder: 0
   leftBorder: 0
   triggerGO: {fileID: 2453771034875044011}
+  enemyType: {fileID: 11400000, guid: 9ce8b17b78315cb429e580ebc2be719f, type: 2}
   attackAnimLong: 1.7
   hitAnimTime: 0.5
   attackRange: 1
@@ -330,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 708954e518227f743925c3ed5c47fdbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  enemyType: {fileID: 11400000, guid: 9ce8b17b78315cb429e580ebc2be719f, type: 2}
   healthBar: {fileID: 2453771034949796761}
 --- !u!114 &1696173703
 MonoBehaviour:
@@ -344,6 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63d60be959613024eac5b5baa1f69160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: {fileID: 11400000, guid: 9ce8b17b78315cb429e580ebc2be719f, type: 2}
   loot: {fileID: 5373411508659659926, guid: faedc3d5674d0a845ba6d4b12dc4b0ba, type: 3}
   soulsSayisi: 75
 --- !u!1 &2453771033996394083

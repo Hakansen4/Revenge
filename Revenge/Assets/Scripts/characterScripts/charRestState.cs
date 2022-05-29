@@ -8,7 +8,7 @@ public class charRestState : charBaseState
     public override void EnterState(charStateManger charachter)
     {
         addComponents(charachter);
-        charHealth = charachter.gameObject.GetComponent<charHealthController>();
+        charHealth = charHealthController.instance;
         charHealth.rest();
         animator.SetTrigger("Rest");
     }

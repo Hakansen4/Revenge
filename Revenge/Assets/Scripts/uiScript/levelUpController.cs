@@ -4,12 +4,24 @@ using UnityEngine;
 
 public class levelUpController : MonoBehaviour
 {
-    public charSoulController souls;
-    public charHealthController health;
-    public charCombatController combat;
+    public static levelUpController instance;
+
+    private charSoulController souls;
+    private charHealthController health;
+    private charCombatController combat;
 
     private int damageLevel = 1;
     private int healthLevel = 1;
+    private void Awake()
+    {
+        instance = this;
+    }
+    private void Start()
+    {
+        souls = charSoulController.instance;
+        health = charHealthController.instance;
+        combat = charCombatController.instance;
+    }
 
     public void damageLevelUp()
     {
@@ -28,7 +40,7 @@ public class levelUpController : MonoBehaviour
         {
             souls.deleteSouls(healthLvlCost);
             health.healthLevelUp(healthLevel * 3);
-            damageLevel++;
+            healthLevel++;
         }
     }
 }

@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 3878197452752074564}
   - component: {fileID: 3878197452752074565}
   - component: {fileID: 3878197452752074566}
+  - component: {fileID: 3878197452307337783}
   m_Layer: 3
   m_Name: Character
   m_TagString: Player
@@ -210,16 +211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5769394712441c94cbc19e0a3ec0f94f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerData: {fileID: 11400000, guid: 84e9b2483c6c16e4b9eac4d1df4e457d, type: 2}
   isAttacking: 0
   attackPoint: {fileID: 3878197452662078916}
-  attackRange: 0.7
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 320
-  restartTime: 2
-  attack1Damage: 0
-  attack2Damage: 0
-  attack3Damage: 0
 --- !u!114 &3878197452752074565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a10607392b6b9438024fc7486abae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerData: {fileID: 11400000, guid: 84e9b2483c6c16e4b9eac4d1df4e457d, type: 2}
   playerMaxHealth: 100
   maxPotionCount: 2
   potionCountText: {fileID: 0}
@@ -250,3 +245,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soulText: {fileID: 0}
+--- !u!114 &3878197452307337783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3878197452752074589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274d3013b924df648b3ae2875435fae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 3878197452752074585}
+  anim: {fileID: 3878197452752074584}

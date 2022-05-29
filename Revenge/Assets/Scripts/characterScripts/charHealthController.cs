@@ -5,9 +5,12 @@ using TMPro;
 
 public class charHealthController : MonoBehaviour
 {
-    public float playerMaxHealth;
+    public static charHealthController instance;
+    [SerializeField] private Player _playerData;
+
+    [HideInInspector]public float playerMaxHealth;
     private float playerHealth;
-    public int maxPotionCount;
+    [HideInInspector]public int maxPotionCount;
     public TextMeshProUGUI potionCountText;
     private int potionCount;
     public GameObject emptyPotion;
@@ -16,12 +19,18 @@ public class charHealthController : MonoBehaviour
     [SerializeField]private healthBarController healthBar;
     private void Awake()
     {
+        instance = this;
+        playerMaxHealth = _playerData.Health;
+        maxPotionCount = _playerData.PotionCount;
         potionCount = maxPotionCount;
         potionCountText.text = potionCount.ToString();
         anim = GetComponent<Animator>();
         playerHealth = playerMaxHealth;
-        state = GetComponent<charStateManger>();
         healthBar.setMaxHealth(playerMaxHealth);
+    }
+    private void Start()
+    {
+        state = charStateManger.instance;
     }
     private void Update() {
         healYourself();
@@ -96,6 +105,7 @@ public class charHealthController : MonoBehaviour
     }
     public void rest()
     {
+        emptyPotion.SetActive(false);
         playerHealth = playerMaxHealth;
         healthBar.setHealth(playerHealth);
         potionCount = maxPotionCount;

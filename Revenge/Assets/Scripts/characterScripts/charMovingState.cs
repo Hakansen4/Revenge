@@ -4,9 +4,11 @@ public class charMovingState : charBaseState
 {
     private bool canJump;
     private float switchTimer;
+    private charCombatController charCombat;
     public override void EnterState(charStateManger charachter)
     {
         addComponents(charachter);
+        charCombat = charCombatController.instance;
         canJump = true;
         switchTimer = 0.5f;
     }
@@ -15,7 +17,7 @@ public class charMovingState : charBaseState
     {
         jump();
         speed = 1;
-        if(!charachter.GetComponent<charCombatController>().isAttacking ||  !canJump)
+        if(!charCombat.isAttacking ||  !canJump)
             speed = 6;
         move(charachter);
         checkDash(charachter);
