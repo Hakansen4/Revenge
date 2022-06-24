@@ -361,10 +361,12 @@ GameObject:
   - component: {fileID: 5714637478193436639}
   - component: {fileID: 5714637478193436638}
   - component: {fileID: 5714637478193436633}
+  - component: {fileID: 7745004243166822563}
   - component: {fileID: 5714637478193436632}
   - component: {fileID: 5714637478193436635}
   - component: {fileID: 1652178503389801530}
   - component: {fileID: 5714637478193436637}
+  - component: {fileID: 6453743595590802556}
   m_Layer: 0
   m_Name: EnemySkeleton3
   m_TagString: enemyPrefab
@@ -411,7 +413,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -483,6 +485,102 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!82 &7745004243166822563
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5714637478193436634}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &5714637478193436632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,6 +599,7 @@ MonoBehaviour:
   leftBorder: 0
   triggerGO: {fileID: 5714637478222841835}
   enemyType: {fileID: 11400000, guid: a2f59bb10518c214facf54b602ec2c7b, type: 2}
+  startingPosition: {x: 0, y: 0, z: 0}
   attackAnimLong: 0.5
   hitAnimTime: 0.5
   attackRange: 4
@@ -550,6 +649,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrow: {fileID: 2385478776390026956, guid: 187ca3d859855664cb066a29a8022713, type: 3}
   position: {fileID: 5714637477989485333}
+--- !u!114 &6453743595590802556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5714637478193436634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f9b2b6ad01db44c9810484ad474f55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeleeAttack: {fileID: 8300000, guid: 92eb945757713534eb11d810cf837493, type: 3}
+  RangeAttack: {fileID: 8300000, guid: 510e9c4a83abf91479a4662e0681d58d, type: 3}
 --- !u!1 &5714637478222841835
 GameObject:
   m_ObjectHideFlags: 0

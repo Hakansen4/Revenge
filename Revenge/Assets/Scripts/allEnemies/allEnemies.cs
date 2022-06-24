@@ -40,8 +40,7 @@ public class allEnemies : MonoBehaviour
     {
         foreach (var item in enemies)
         {
-            item.transform.position = new Vector3(item.GetComponent<e_0stateManager>().leftBorder, item.transform.position.y,
-                                                    item.transform.position.z);
+            item.transform.position = item.GetComponent<e_0stateManager>().startingPosition;
         }
     }
 

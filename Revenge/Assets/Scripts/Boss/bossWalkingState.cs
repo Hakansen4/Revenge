@@ -31,7 +31,8 @@ public class bossWalkingState : bossBaseState
     }
     private void walk()
     {
-        trnsfrm.position = Vector2.MoveTowards(trnsfrm.position,playerPosition.position,speed * Time.deltaTime);
+        if (playerPosition != null)
+            trnsfrm.position = Vector2.MoveTowards(trnsfrm.position, playerPosition.position, speed * Time.deltaTime);
     }
     private void checkDistance(bossStateManager boss)
     {
@@ -53,9 +54,9 @@ public class bossWalkingState : bossBaseState
     }
     private bool checkDash()
     {
-        if(Time.time - dashTimer > dashCooldown)
+        if(Time.timeSinceLevelLoad - dashTimer > dashCooldown)
         {
-            dashTimer = Time.time;
+            dashTimer = Time.timeSinceLevelLoad;
             return true;
         }
         else

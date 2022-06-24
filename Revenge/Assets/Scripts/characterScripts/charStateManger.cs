@@ -6,6 +6,8 @@ public class charStateManger : MonoBehaviour
 {
     public static charStateManger instance;
 
+    public GameObject deadScreen;
+
     #region States
     public charBaseState currentState;
     public charIdleState idleState = new charIdleState();

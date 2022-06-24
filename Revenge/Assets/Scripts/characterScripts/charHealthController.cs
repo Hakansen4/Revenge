@@ -16,6 +16,7 @@ public class charHealthController : MonoBehaviour
     public GameObject emptyPotion;
     private charStateManger state;
     private Animator anim;
+    private PlayerSoundManager Sounds;
     [SerializeField]private healthBarController healthBar;
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class charHealthController : MonoBehaviour
     private void Start()
     {
         state = charStateManger.instance;
+        Sounds = PlayerSoundManager.instance;
     }
     private void Update() {
         healYourself();
@@ -42,7 +44,10 @@ public class charHealthController : MonoBehaviour
         if(other.CompareTag("e0_Hit")   ||  other.CompareTag("Arrow"))
         {
             if(playerHealth > 0)
+            {
+                Sounds.Play(PlayerAudio.Hitted);
                 playerHealth -= 15;
+            }
             healthBar.setHealth(playerHealth);
             if(playerHealth > 0)
             {

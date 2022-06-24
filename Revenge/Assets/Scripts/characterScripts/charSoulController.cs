@@ -27,5 +27,11 @@ public class charSoulController : MonoBehaviour
     public void deleteSouls(int count)
     {
         soulSayisi -= count;
+        soulText.text = soulSayisi.ToString();
+    }
+    public void resetSouls()
+    {
+        soulSayisi = 0;
+        soulText.text = soulSayisi.ToString();
     }
 }

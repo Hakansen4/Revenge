@@ -21,7 +21,7 @@ public abstract class bossBaseState
         physic = boss.GetComponent<Rigidbody2D>();
         trnsfrm = boss.GetComponent<Transform>();
         animator = boss.GetComponentInChildren<Animator>();
-        playerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerPosition = boss.playerPos;
     }
     public void checkDirection()
     {

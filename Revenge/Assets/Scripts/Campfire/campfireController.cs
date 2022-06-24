@@ -8,6 +8,7 @@ public class campfireController : MonoBehaviour
     private allEnemies enemies;
     public GameObject tButton;
     public GameObject levelUpScreen;
+    public GameManager gm;
 
     private bool inArea = false;
     private void Start()
@@ -41,10 +42,11 @@ public class campfireController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.T))
             {
+                gm.lastCampfire = transform;
                 charState.SwitchState(charState.restState);
-                enemies.setActivity(false);
-                enemies.setBasePosition();
+                enemiesWorks();
                 levelUpScreen.SetActive(true);
+                CampfireSoundManager.PlayFire();
             }
         }
     }
@@ -53,5 +55,12 @@ public class campfireController : MonoBehaviour
         enemies.respawnEnemies();
         charState.SwitchState(charState.movingState);
         levelUpScreen.SetActive(false);
+        CampfireSoundManager.StopFire();
+    }
+    public void enemiesWorks()
+    {
+        enemies.setActivity(false);
+        enemies.setBasePosition();
+        enemies.setActivity(true);
     }
 }

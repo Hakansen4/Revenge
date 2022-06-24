@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class charCombatController : MonoBehaviour
 {
+    private enum AttackMode
+    {
+        firstAttack,
+        secondAttack,
+        thirdAttack
+    }
+
     public static charCombatController instance;
     [SerializeField] private Player _playerData;
-    private enum AttackMode
-{
-    firstAttack,
-    secondAttack,
-    thirdAttack
-}
+   
     private Animator animator;
     [HideInInspector]public bool isAttacking;
+
     private AttackMode attackMode;
+    private PlayerSoundManager Sounds;
     private float restartTimer;
     private float attackAnimHittime = 0.4f;
     private float Damage;
@@ -36,6 +40,7 @@ public class charCombatController : MonoBehaviour
         attack3Damage = _playerData.ThirdAttackDamge;
     }
     private void Start() {
+        Sounds = PlayerSoundManager.instance;
         animator = GetComponent<Animator>();
         isAttacking = false;
         attackMode = AttackMode.firstAttack;
@@ -71,12 +76,18 @@ public class charCombatController : MonoBehaviour
         //attackWorks
         restartTimer = Time.time;
         Collider2D[] hitEnemies =  Physics2D.OverlapCircleAll(attackPoint.position,attackRange,enemyLayers);
+        if (hitEnemies.Length == 0)
+            Sounds.Play(PlayerAudio.Attack);
         foreach(Collider2D enemy in hitEnemies)
         {
             if(enemy.CompareTag("Enemy"))
+            {
                 StartCoroutine(attackWorksE_0(enemy));
+            }
             else if(enemy.CompareTag("Boss"))
+            {
                 StartCoroutine(attackWorksBoss(enemy));
+            }
         }
         StartCoroutine(nameof(reloadAttack));
     }
@@ -108,25 +119,29 @@ public class charCombatController : MonoBehaviour
 
     private IEnumerator attackWorksE_0(Collider2D enemy)
     {
-            yield return new WaitForSeconds(attackAnimHittime);
-            e_0stateManager enemyState = enemy.GetComponentInParent<e_0stateManager>();
-            e_0healthController healthEnemy = enemy.GetComponentInParent<e_0healthController>();
-            healthEnemy.increaseHealth(Damage);
-            if(enemyState.combatState.isHeavy)
+        e_0stateManager enemyState = enemy.GetComponentInParent<e_0stateManager>();
+        e_0healthController healthEnemy = enemy.GetComponentInParent<e_0healthController>();
+        if (!healthEnemy.isDead())
+            Sounds.Play(PlayerAudio.HitEnemy);
+        yield return new WaitForSeconds(attackAnimHittime);
+        if (!healthEnemy.isDead())
+            BloodEffectController.Play();
+        healthEnemy.increaseHealth(Damage);
+        if (enemyState.combatState.isHeavy)
+        {
+            if (!enemyState.combatState.isAttacking)
             {
-                if(!enemyState.combatState.isAttacking)
-                {
-                    if(!healthEnemy.isDead())
-                        enemyState.SwitchState(enemyState.hittedState);
-                }
-            }
-            else
-            {
-                if(!healthEnemy.isDead())
-                {
+                if (!healthEnemy.isDead())
                     enemyState.SwitchState(enemyState.hittedState);
-                }
             }
+        }
+        else
+        {
+            if (!healthEnemy.isDead()) 
+            {
+                enemyState.SwitchState(enemyState.hittedState);
+            }
+        }
     }
 
     private IEnumerator attackWorksBoss(Collider2D enemy)

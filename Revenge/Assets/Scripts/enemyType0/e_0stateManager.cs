@@ -13,6 +13,7 @@ public class e_0stateManager : MonoBehaviour
     public GameObject triggerGO;
     [SerializeField]private Enemies enemyType;
 
+    [HideInInspector] public Vector3 startingPosition; 
     [HideInInspector] public float attackAnimLong;
     [HideInInspector] public float hitAnimTime;
     [HideInInspector] public float attackRange;
@@ -40,6 +41,7 @@ public class e_0stateManager : MonoBehaviour
     void Start()
     {
         leftBorder = patrolLeft.position.x;
+        startingPosition = patrolLeft.position;
         rightBorder = patrolRight.position.x;
         currentState = patrolState;
         currentState.EnterState(this);

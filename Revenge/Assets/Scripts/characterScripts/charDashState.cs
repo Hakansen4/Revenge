@@ -6,13 +6,11 @@ public class charDashState : charBaseState
 {
     private bool isGoingRight;
     private float timer;
-    private float dashTime = 1;
     private float dashSpeed = 6;
-    private BoxCollider2D coll;
     public override void EnterState(charStateManger charachter)
     {
-        coll = charachter.GetComponent<BoxCollider2D>();
         addComponents(charachter);
+        charachter.GetComponent<charClimb>().enabled = false;
         checkDirection();
         dash(charachter);
     }
@@ -33,7 +31,6 @@ public class charDashState : charBaseState
         else
             physic.velocity = Vector2.left * dashSpeed;
         physic.gravityScale = 0;
-        coll.enabled = false;
         trnsfrm.position -= new Vector3(0,0.5f,0);
         animator.SetTrigger("Dash");
         timer = Time.time;
@@ -51,10 +48,9 @@ public class charDashState : charBaseState
     {
         if(Time.time - timer > 0.5f)
         {
-            //trnsfrm.position += new Vector3(0,0.5f,0);
-            coll.enabled = true;
             physic.velocity = Vector2.zero;
             physic.gravityScale = 1;
+            charachter.GetComponent<charClimb>().enabled = true;
             charachter.SwitchState(charachter.idleState);
         }
     }

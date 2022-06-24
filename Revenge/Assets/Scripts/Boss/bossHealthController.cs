@@ -30,4 +30,9 @@ public class bossHealthController : MonoBehaviour
             return true;
         return false;
     }
+    public void Reset()
+    {
+        health = maxHealth;
+        healthBar.setHealth(health);
+    }
 }

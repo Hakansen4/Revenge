@@ -18,6 +18,7 @@ public class bossStateManager : MonoBehaviour
     public float S_AttackAnimTime;
     public float S_AttackCooldown;
 
+    public Transform playerPos;
     void Start()
     {
         currentState = walkState;

@@ -11,6 +11,8 @@ TagManager:
   - chaseArea
   - Boss
   - enemyPrefab
+  - Ladder
+  - DeadScreen
   layers:
   - Default
   - TransparentFX

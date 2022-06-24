@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRangeEnemy: 0
   isHeavyEnemy: 1
-  enemyHealth: 5
+  enemyHealth: 100
   enemySoulCount: 75
   attackRange: 1
   hitAnimTime: 0.5
