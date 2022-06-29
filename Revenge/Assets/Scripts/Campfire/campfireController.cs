@@ -47,6 +47,7 @@ public class campfireController : MonoBehaviour
                 enemiesWorks();
                 levelUpScreen.SetActive(true);
                 CampfireSoundManager.PlayFire();
+                gm.SaveGame(transform.position);
             }
         }
     }

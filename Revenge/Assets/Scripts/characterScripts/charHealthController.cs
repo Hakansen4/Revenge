@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class charHealthController : MonoBehaviour
 {
@@ -94,12 +95,19 @@ public class charHealthController : MonoBehaviour
     }
     private void hitEffect(Collider2D other)
     {
-        if(other.transform.position.x > gameObject.transform.position.x)
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(-100,100));
+        if (other.transform.position.x > gameObject.transform.position.x)
+            GetComponent<Rigidbody2D>().DOMoveX(transform.position.x - 1, 0.6f).OnComplete(() => HitEffectEnded());
         else
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(100,100));
+            GetComponent<Rigidbody2D>().DOMoveX(transform.position.x + 1, 0.6f).OnComplete(() => HitEffectEnded());
+
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<charStateManger>().FLAG_MOVE = false;
     }
-    public void healthLevelUp(int value)
+    private void HitEffectEnded()
+    {
+        GetComponent<charStateManger>().FLAG_MOVE = true;
+    }
+    public void healthLevelUp(float value)
     {
         Debug.Log("Eski Health = " + playerMaxHealth);
         playerMaxHealth += value;

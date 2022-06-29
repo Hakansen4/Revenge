@@ -28,7 +28,7 @@ public class charCombatController : MonoBehaviour
     private float attackRange;
     private LayerMask enemyLayers;
     private float restartTime;
-    private int attack1Damage;private int attack2Damage;private int attack3Damage;
+    public int attack1Damage;private int attack2Damage;private int attack3Damage;
     private void Awake()
     {
         instance = this;

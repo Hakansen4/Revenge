@@ -15,14 +15,19 @@ public class charMovingState : charBaseState
 
     public override void UpdateState(charStateManger charachter)
     {
+        if(charachter.FLAG_MOVE)
+        {
+            MoveWorks(charachter);
+        }
+    }
+    private void MoveWorks(charStateManger charachter)
+    {
         jump();
         if (!charCombat.isAttacking || !canJump)
         {
             move(charachter);
             checkDash(charachter);
         }
-        //move(charachter);
-        //checkDash(charachter);
     }
 
     public override void OnCollisionEnter2D(charStateManger charachter,Collision2D collisionInfo)

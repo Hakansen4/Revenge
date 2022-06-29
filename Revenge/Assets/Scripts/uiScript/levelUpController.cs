@@ -66,4 +66,18 @@ public class levelUpController : MonoBehaviour
         RShealth.text = healthLvlCost.ToString();
         RSdamage.text = damageLvlUpCost.ToString();
     }
+
+    public int GetDamageLevel()
+    {
+        return damageLevel;
+    }
+    public int GetHealthLevel()
+    {
+        return healthLevel;
+    }
+    public void SetLevels(int DamageLevel,int HealthLevel)
+    {
+        damageLevel = DamageLevel;
+        healthLevel = HealthLevel;
+    }
 }

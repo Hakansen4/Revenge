@@ -8,6 +8,11 @@ public class charStateManger : MonoBehaviour
 
     public GameObject deadScreen;
 
+    #region Flags
+    public bool FLAG_MOVE;
+    public bool FLAG_ATTACK;
+    #endregion
+
     #region States
     public charBaseState currentState;
     public charIdleState idleState = new charIdleState();
@@ -20,7 +25,13 @@ public class charStateManger : MonoBehaviour
     #endregion
     private void Awake()
     {
+        Init();
         instance = this;
+    }
+    private void Init()
+    {
+        FLAG_MOVE = true;
+        FLAG_ATTACK = true;
     }
     void Start()
     {
