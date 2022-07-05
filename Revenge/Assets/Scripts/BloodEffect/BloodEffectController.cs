@@ -6,15 +6,14 @@ public  class BloodEffectController : MonoBehaviour
 {
     public static BloodEffectController instance;
 
-    private static Animator anim;
+    public GameObject HitEffect;
 
     private void Awake()
     {
         instance = this;
-        anim = GetComponentInChildren<Animator>();
     }
-    public static void Play()
+    public  void Play()
     {
-        anim.SetTrigger("Play");
+        Instantiate(HitEffect, transform.position, Quaternion.identity);
     }
 }

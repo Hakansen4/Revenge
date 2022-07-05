@@ -13,6 +13,7 @@ TagManager:
   - enemyPrefab
   - Ladder
   - DeadScreen
+  - GameMusics
   layers:
   - Default
   - TransparentFX

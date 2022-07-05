@@ -14,14 +14,17 @@ public class GameManager : MonoBehaviour
     public bossHealthController boss;
     public levelUpController lvlUp;
 
+    private GameMusicController GameMusics;
     private SaveObjects Save;
     private void Start()
     {
+        GameMusics = GameObject.FindGameObjectWithTag("GameMusics").GetComponent<GameMusicController>();
         StartGame();
     }
     private void StartGame()
     {
         Save = SaveManager.Load();
+        CheckMusic();
         if(Save.Saved)
         {
             charHealth.healthLevelUp(Save.Health - charHealth.playerMaxHealth);
@@ -30,6 +33,13 @@ public class GameManager : MonoBehaviour
             charState.gameObject.transform.position = new Vector3(Save.xPosition, Save.yPosition, 0);
             lvlUp.SetLevels(Save.DamageLevel, Save.HealthLevel);
         }
+    }
+    private void CheckMusic()
+    {
+        if (SceneManager.GetActiveScene().name == "1")
+            GameMusics.SetMusic(MusicType.Gameplay);
+        else
+            GameMusics.SetMusic(MusicType.Boss);
     }
     public void SaveGame(Vector3 position)
     {
@@ -61,7 +71,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameMusics.SetMusic(MusicType.Gameplay);
+            SceneManager.LoadScene("1");
         }
     }
 }

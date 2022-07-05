@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c5265b7a80fbb41b1e3873c86c2944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HitEffect: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
 --- !u!1 &1700092078
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +260,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 4723107735738678597, guid: 03ea778c71ea5094691169c030e1939a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -446,6 +447,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deadScreen: {fileID: 0}
+  FLAG_MOVE: 0
+  FLAG_ATTACK: 0
 --- !u!114 &3878197452752074564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,6 +464,7 @@ MonoBehaviour:
   _playerData: {fileID: 11400000, guid: 84e9b2483c6c16e4b9eac4d1df4e457d, type: 2}
   isAttacking: 0
   attackPoint: {fileID: 3878197452662078916}
+  attack1Damage: 0
 --- !u!114 &3878197452752074565
 MonoBehaviour:
   m_ObjectHideFlags: 0

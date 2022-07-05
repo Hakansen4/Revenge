@@ -23,6 +23,7 @@ public class charCombatController : MonoBehaviour
     private float attackAnimHittime = 0.4f;
     private float Damage;
     private charStateManger state;
+    private BloodEffectController hitEffect;
     private float attackReloadTime = 0.50f;
     [SerializeField]private Transform attackPoint;
     private float attackRange;
@@ -41,6 +42,7 @@ public class charCombatController : MonoBehaviour
     }
     private void Start() {
         Sounds = PlayerSoundManager.instance;
+        hitEffect = BloodEffectController.instance;
         animator = GetComponent<Animator>();
         isAttacking = false;
         attackMode = AttackMode.firstAttack;
@@ -125,7 +127,7 @@ public class charCombatController : MonoBehaviour
             Sounds.Play(PlayerAudio.HitEnemy);
         yield return new WaitForSeconds(attackAnimHittime);
         if (!healthEnemy.isDead())
-            BloodEffectController.Play();
+            hitEffect.Play();
         healthEnemy.increaseHealth(Damage);
         if (enemyState.combatState.isHeavy)
         {
@@ -146,10 +148,14 @@ public class charCombatController : MonoBehaviour
 
     private IEnumerator attackWorksBoss(Collider2D enemy)
     {
-            yield return new WaitForSeconds(attackAnimHittime);
-            bossStateManager bossState = enemy.GetComponentInParent<bossStateManager>();
-            bossHealthController healthBoss = enemy.GetComponentInParent<bossHealthController>();
-            healthBoss.increaseHealth();
+        bossStateManager bossState = enemy.GetComponentInParent<bossStateManager>();
+        bossHealthController healthBoss = enemy.GetComponentInParent<bossHealthController>();
+        if (!healthBoss.isDead())
+            Sounds.Play(PlayerAudio.HitEnemy);
+        yield return new WaitForSeconds(attackAnimHittime);
+        if (!healthBoss.isDead())
+            hitEffect.Play();
+        healthBoss.increaseHealth();
     }
     public float getDamage()
     {
