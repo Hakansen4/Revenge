@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class charHealthController : MonoBehaviour
 {
@@ -63,15 +64,37 @@ public class charHealthController : MonoBehaviour
     }
     private void healYourself()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        #region PC_CONTROL
+        //if(Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    if(chechPotionCount())
+        //    {
+        //        if(playerHealth != playerMaxHealth)
+        //        {
+        //            if(playerMaxHealth - playerHealth < 20)
+        //                playerHealth = playerMaxHealth;
+        //            else if(playerHealth > 0)
+        //            {
+        //                playerHealth += 20;
+        //            }
+        //            anim.SetTrigger("Heal");
+        //            healthBar.setHealth(playerHealth);
+        //            potionCount--;
+        //            potionCountText.text = potionCount.ToString();
+        //        }
+        //    }
+        //}
+        #endregion
+        #region MOBILE_CONTROL
+        if (CrossPlatformInputManager.GetButtonDown("Heal"))
         {
-            if(chechPotionCount())
+            if (chechPotionCount())
             {
-                if(playerHealth != playerMaxHealth)
+                if (playerHealth != playerMaxHealth)
                 {
-                    if(playerMaxHealth - playerHealth < 20)
+                    if (playerMaxHealth - playerHealth < 20)
                         playerHealth = playerMaxHealth;
-                    else if(playerHealth > 0)
+                    else if (playerHealth > 0)
                     {
                         playerHealth += 20;
                     }
@@ -82,6 +105,7 @@ public class charHealthController : MonoBehaviour
                 }
             }
         }
+        #endregion
     }
 
     private bool chechPotionCount()

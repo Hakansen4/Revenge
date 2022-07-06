@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameMusicController : MonoBehaviour
 {
+    public static GameMusicController instance;
+
     public AudioClip MenuMusic;
     public AudioClip GameplayMusic;
     public AudioClip BossFightMusic;
@@ -13,6 +15,7 @@ public class GameMusicController : MonoBehaviour
     private Toggle toggle;
     private void Awake()
     {
+        instance = this;
         DontDestroyOnLoad(gameObject);
         toggle = GetComponentInChildren<Toggle>();
         AudioPlayer = GetComponent<AudioSource>();

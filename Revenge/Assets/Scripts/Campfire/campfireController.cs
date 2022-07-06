@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class campfireController : MonoBehaviour
 {
@@ -40,7 +41,19 @@ public class campfireController : MonoBehaviour
     {
         if (inArea && charState.currentState != charState.restState)
         {
-            if (Input.GetKeyDown(KeyCode.T))
+            #region PC_CONTROL
+            //if (Input.GetKeyDown(KeyCode.T))
+            //{
+            //    gm.lastCampfire = transform;
+            //    charState.SwitchState(charState.restState);
+            //    enemiesWorks();
+            //    levelUpScreen.SetActive(true);
+            //    CampfireSoundManager.PlayFire();
+            //    gm.SaveGame(transform.position);
+            //}
+            #endregion
+            #region MOBILE_CONTROL
+            if (CrossPlatformInputManager.GetButtonDown("Rest"))
             {
                 gm.lastCampfire = transform;
                 charState.SwitchState(charState.restState);
@@ -49,6 +62,7 @@ public class campfireController : MonoBehaviour
                 CampfireSoundManager.PlayFire();
                 gm.SaveGame(transform.position);
             }
+            #endregion
         }
     }
     public void endRest()

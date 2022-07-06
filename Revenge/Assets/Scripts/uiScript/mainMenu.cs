@@ -7,9 +7,10 @@ using UnityEngine.UI;
 public class mainMenu : MonoBehaviour
 {
     public Button CtButton;
-    public GameMusicController gameMusic;
+    private GameMusicController gameMusic;
     private void Awake()
     {
+        gameMusic = GameMusicController.instance;
         gameMusic.SetMusic(MusicType.Menu); 
         SaveObjects save = SaveManager.Load();
         if(save != null)

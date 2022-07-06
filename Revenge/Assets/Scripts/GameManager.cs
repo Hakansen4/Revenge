@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     private SaveObjects Save;
     private void Start()
     {
-        GameMusics = GameObject.FindGameObjectWithTag("GameMusics").GetComponent<GameMusicController>();
+        GameMusics = GameMusicController.instance;
         StartGame();
     }
     private void StartGame()

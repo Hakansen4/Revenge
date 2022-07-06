@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class charCombatController : MonoBehaviour
 {
@@ -49,13 +50,24 @@ public class charCombatController : MonoBehaviour
         state = charStateManger.instance;
     }
     private void Update() {
-        if(Input.GetMouseButtonDown(0)  &&  !isAttacking    &&  state.currentState != state.deadState
-            &&  state.currentState != state.restState)
+        #region PC_CONTROL
+        //if(Input.GetMouseButtonDown(0)  &&  !isAttacking    &&  state.currentState != state.deadState
+        //    &&  state.currentState != state.restState)
+        //{
+        //    isAttacking = true;
+        //    checkAttackMode();
+        //    attack();
+        //}
+        #endregion
+        #region MOBILE_CONTROL
+        if (CrossPlatformInputManager.GetButtonDown("Attack") && !isAttacking && state.currentState != state.deadState
+            && state.currentState != state.restState)
         {
             isAttacking = true;
             checkAttackMode();
             attack();
         }
+        #endregion
     }
     private void attack()
     {

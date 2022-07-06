@@ -7,10 +7,13 @@ public class endSceneText : MonoBehaviour
 {
     public TextMeshProUGUI MainText, GoMenu;
     private bool goMenuActive = false;
+    GameObject gameMusic;
     [Multiline]
     public string Maintxt;
     void Start()
     {
+        gameMusic = GameObject.FindGameObjectWithTag("GameMusics");
+        Destroy(gameMusic);
         StartCoroutine("WriteMaintxt");
     }
     private void Update()

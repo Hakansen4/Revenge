@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class charClimb : MonoBehaviour
 {
@@ -14,9 +15,12 @@ public class charClimb : MonoBehaviour
 
     private void Update()
     {
-        vertical = Input.GetAxis("Vertical");
+        //PC_CONTROL
+        //vertical = Input.GetAxis("Vertical");
+        //MOBILE_CONTROL
+        vertical = CrossPlatformInputManager.GetAxis("Vertical");
 
-        if(isLadder && Mathf.Abs(vertical) > 0)
+        if (isLadder && Mathf.Abs(vertical) > 0)
         {
             anim.SetBool("ClimbStop", false);
             anim.SetBool("Climb", true);
