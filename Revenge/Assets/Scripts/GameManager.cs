@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -16,6 +17,11 @@ public class GameManager : MonoBehaviour
 
     private GameMusicController GameMusics;
     private SaveObjects Save;
+
+    public TextMeshProUGUI FpsText;
+    private float poolingTime = 1f;
+    private float time;
+    private int frameCount;
     private void Start()
     {
         GameMusics = GameMusicController.instance;
@@ -32,6 +38,23 @@ public class GameManager : MonoBehaviour
             souls.addSoul(Save.Soul);
             charState.gameObject.transform.position = new Vector3(Save.xPosition, Save.yPosition, 0);
             lvlUp.SetLevels(Save.DamageLevel, Save.HealthLevel);
+        }
+    }
+    private void Update()
+    {
+        ShowFPS();
+    }
+    private void ShowFPS()
+    {
+        time += Time.deltaTime;
+        frameCount++;
+        if(time >= poolingTime)
+        {
+            int frameRate = Mathf.RoundToInt(frameCount / time);
+            FpsText.text = frameRate.ToString() + " FPS";
+
+            time -= poolingTime;
+            frameCount = 0;
         }
     }
     private void CheckMusic()
@@ -72,7 +95,7 @@ public class GameManager : MonoBehaviour
         else
         {
             GameMusics.SetMusic(MusicType.Gameplay);
-            SceneManager.LoadScene("1");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8034221262924788028
 Transform:
@@ -50,3 +50,5 @@ MonoBehaviour:
   deadScreen: {fileID: 0}
   souls: {fileID: 0}
   boss: {fileID: 0}
+  lvlUp: {fileID: 0}
+  FpsText: {fileID: 0}

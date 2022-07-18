@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityStandardAssets.CrossPlatformInput;
 public class PlatformController : MonoBehaviour
 {
     private PlatformEffector2D PlatformEffector;
@@ -19,16 +19,39 @@ public class PlatformController : MonoBehaviour
     }
     private void CheckUp()
     {
-        if(Input.GetKey(KeyCode.W)    && waitTime <= 0)
+        #region PC_CONTROL
+        if (Input.GetKey(KeyCode.W)    && waitTime <= 0)
         {
             PlatformEffector.rotationalOffset = 0.0f;
             waitTime = 0.5f;
             StartCoroutine(ResetPlatform());
         }
+        #endregion
+        #region MOBILE_CONTROL
+        if (CrossPlatformInputManager.GetAxis("Vertical") > 0 && waitTime <= 0)
+        {
+            PlatformEffector.rotationalOffset = 0.0f;
+            waitTime = 0.5f;
+            StartCoroutine(ResetPlatform());
+        }
+        #endregion
     }
     private void CheckDown()
     {
-        if(Input.GetKey(KeyCode.S)  &&  waitTime <= 0)
+        #region PC_CONTROL
+        //if(Input.GetKey(KeyCode.S)  &&  waitTime <= 0)
+        //{
+        //    PlatformEffector.rotationalOffset = 180.0f;
+        //    waitTime = 0.5f;
+        //    StartCoroutine(ResetPlatform());
+        //}
+        //else
+        //{
+        //    waitTime -= Time.deltaTime;
+        //}
+        #endregion
+        #region MOBILE_CONTROL
+        if (CrossPlatformInputManager.GetAxis("Vertical") < 0 && waitTime <= 0)
         {
             PlatformEffector.rotationalOffset = 180.0f;
             waitTime = 0.5f;
@@ -38,6 +61,7 @@ public class PlatformController : MonoBehaviour
         {
             waitTime -= Time.deltaTime;
         }
+        #endregion
     }
     private IEnumerator ResetPlatform()
     {
