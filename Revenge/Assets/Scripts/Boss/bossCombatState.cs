@@ -59,6 +59,7 @@ public class bossCombatState : bossBaseState
         if(Time.time - S_AttackTimer > S_AttackCooldown &&  !isAttacking)
         {
             S_AttackTimer = Time.time;
+            isAttacking = true;
             boss.SwitchState(boss.S_AttackState);
         }
     }

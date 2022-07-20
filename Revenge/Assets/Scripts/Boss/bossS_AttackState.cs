@@ -12,6 +12,7 @@ public class bossS_AttackState : bossBaseState
         animator.SetTrigger("S_Attack");
         S_AttackAnimLong = boss.S_AttackAnimTime;
         S_AttackTimer = Time.time;
+        Debug.Log(S_AttackAnimLong);
     }
 
     public override void UpdateState(bossStateManager boss)
@@ -27,6 +28,7 @@ public class bossS_AttackState : bossBaseState
     {
         if(Time.time - S_AttackTimer > S_AttackAnimLong)
         {
+            Debug.Log("Girdi");
             boss.SwitchState(boss.combatState);
         }
     }

@@ -136,7 +136,9 @@ public class charCombatController : MonoBehaviour
         e_0stateManager enemyState = enemy.GetComponentInParent<e_0stateManager>();
         e_0healthController healthEnemy = enemy.GetComponentInParent<e_0healthController>();
         if (!healthEnemy.isDead())
+        {
             Sounds.Play(PlayerAudio.HitEnemy);
+        }
         yield return new WaitForSeconds(attackAnimHittime);
         if (!healthEnemy.isDead())
             hitEffect.Play();
@@ -175,10 +177,8 @@ public class charCombatController : MonoBehaviour
     }
     public void levelUpDamage(int damage)
     {
-        Debug.Log("Eski Damage = " + attack1Damage);
         attack1Damage += damage;
         attack2Damage += damage;
         attack3Damage += damage;
-        Debug.Log("Yeni Damage = " + attack1Damage);
     }
 }

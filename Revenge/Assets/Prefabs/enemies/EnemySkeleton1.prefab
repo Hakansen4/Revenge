@@ -431,6 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: {fileID: 11400000, guid: 9ce8b17b78315cb429e580ebc2be719f, type: 2}
+  DamageText: {fileID: 8405891951033480011, guid: c932ed1cb69305c458e85d658c43158e, type: 3}
   healthBar: {fileID: 2453771034949796761}
 --- !u!114 &1696173703
 MonoBehaviour:

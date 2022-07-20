@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class e_0healthController : MonoBehaviour
 {
     [SerializeField] private Enemies enemyType;
+    [SerializeField] private GameObject DamageText;
     private float maxHealth;
     [SerializeField]private healthBarController healthBar;
     private e_0stateManager state;
@@ -32,12 +33,22 @@ public class e_0healthController : MonoBehaviour
         healthBarTimer = Time.time + healthBarTime;
         healtBarObject.SetActive(true);
         if(health > 0)
-            health-=damage;
+        {
+            health -= damage;
+            ShowDamage(damage);
+        }
         healthBar.setHealth(health);
         if(health <= 0  &&  state.currentState != state.deadState)
         {
             state.SwitchState(state.deadState);
         }
+    }
+    private void ShowDamage(float Damage)
+    {
+        var GameO = Instantiate(DamageText, transform.position, Quaternion.identity);
+        GameO.GetComponent<DamageText>().SetDirection(!state.isGoingLeft);
+        GameO.GetComponent<TextMeshPro>().text = Damage.ToString();
+
     }
     public bool isDead()
     {
