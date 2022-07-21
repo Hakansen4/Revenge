@@ -20,21 +20,23 @@ public class PlatformController : MonoBehaviour
     private void CheckUp()
     {
         #region PC_CONTROL
-        if (Input.GetKey(KeyCode.W)    && waitTime <= 0)
-        {
-            PlatformEffector.rotationalOffset = 0.0f;
-            waitTime = 0.5f;
-            StartCoroutine(ResetPlatform());
-        }
+        //if (Input.GetKey(KeyCode.W)    && waitTime <= 0)
+        //{
+        //    PlatformEffector.rotationalOffset = 0.0f;
+        //    waitTime = 0.5f;
+        //}
         #endregion
         #region MOBILE_CONTROL
         if (CrossPlatformInputManager.GetAxis("Vertical") > 0 && waitTime <= 0)
         {
             PlatformEffector.rotationalOffset = 0.0f;
             waitTime = 0.5f;
-            StartCoroutine(ResetPlatform());
         }
         #endregion
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        ResetPlatform();
     }
     private void CheckDown()
     {
@@ -55,7 +57,6 @@ public class PlatformController : MonoBehaviour
         {
             PlatformEffector.rotationalOffset = 180.0f;
             waitTime = 0.5f;
-            StartCoroutine(ResetPlatform());
         }
         else
         {
@@ -63,9 +64,8 @@ public class PlatformController : MonoBehaviour
         }
         #endregion
     }
-    private IEnumerator ResetPlatform()
+    private void ResetPlatform()
     {
-        yield return new WaitForSeconds(1.0f);
         PlatformEffector.rotationalOffset = 0.0f;
     }
 }
