@@ -1,5 +1,5 @@
 # Revenge
-My graduation project(The game is not finished yet.)
+My graduation project
 - This is the document which ı made for this game on my graduation lesson.
 [B181210014.pdf](https://github.com/Hakansen4/Revenge/files/9155068/B181210014.pdf)
 
